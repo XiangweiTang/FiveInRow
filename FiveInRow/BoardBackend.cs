@@ -26,6 +26,24 @@ namespace FiveInRow
             return false;
         }
 
+        public bool RemoveLastStep(int i, int j)
+        {
+            if (InBoard(i) && InBoard(j))
+            {
+                if(Board[i,j]!=null)
+                {
+                    var last = Board[i, j];
+                    if (last == !IsWhite)
+                    {
+                        IsWhite = !IsWhite;
+                        Board[i, j] = null;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         private void EvalVictory()
         {
             foreach (int i in EvalBoard())
